@@ -1,0 +1,18 @@
+
+/*styling for the signup page*/
+
+/*success msg*/
+.success{
+    color: green;
+    text-align: center;
+    font-size: 3vmin;
+}
+
+
+
+/*fail msg*/
+.fail{
+    color: red;
+    text-align: center;
+    font-size: 3vmin;
+}

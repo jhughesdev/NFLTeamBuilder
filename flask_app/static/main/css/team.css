@@ -1,0 +1,25 @@
+/*style sheet for team page*/
+
+.playerName{
+    text-align: center;
+    font-size: 2vmin;
+}
+
+.teamInfo{
+    text-align: center;
+    font-size: 3vmin;
+}
+
+
+.team{
+
+    color: green;
+    font-size: 2vmin;
+    text-align: center;
+}
+
+.evenSpace{
+    width: 100%;
+    font-size: 3.1vmin ;
+    text-align: center;
+}

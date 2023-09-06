@@ -1,0 +1,173 @@
+/* styling for the nav bar  */
+
+
+/* the page title */
+nav h1{
+    color: white;
+    font-size: 1.2em;
+    margin-top: 5vh;
+    margin-left: 5vw;
+    position: relative;
+}
+
+.bold {
+    font-weight:bold;
+}
+
+/* makes it so the links do not have underlines */
+a:link { 
+    text-decoration: none; 
+}
+
+/* makes it so links dont change color when visited */
+a:visited {
+    text-decoration: none;
+    color: white;
+}
+/* 
+change opacity of links on hover */
+a:hover { 
+    text-decoration: none; 
+    opacity: 0.5;
+
+}
+
+/* remove underlines when clicking on link */
+a:active { 
+    text-decoration: none;
+ }
+
+/* image sizing */
+nav img{
+    width: 5vmin;
+    height: 5vmin;
+}
+
+/* do not show dropdown when screen is > 650 px */
+.dropdown{
+    display: none;
+}
+
+/* differing styling when screens is < 650 px */
+@media screen and (max-width:650px){
+    .wrapper{
+        display: grid;
+
+    }
+
+    nav .box{
+        display: none;
+
+    }
+
+    /* the dropdown button */
+    .dropbtn {
+    margin: auto;
+    top: -5vmin;
+    background-color: #67fc80;
+    padding: 2vmin;
+    font-size: 2vmin;
+    border: none;
+    position: relative;
+    display:block;
+    }
+    
+    /* position the dropdown */
+    .dropdown {
+    position: relative;
+    display: inline-block;
+    }
+    
+    /* the dropdown content */
+    .dropdown-content {
+    display: none;
+    position: relative;
+    margin: auto;
+    top: -5vmin;
+    background-color: #0bc957;
+    width: 90vw;
+    height: 100vh;
+    }
+    
+
+    .dropdown-content a {
+    color: #020202;
+    text-decoration: none;
+    display: block;
+    }
+    
+    .dropcheck {
+        position: relative;
+    }
+    
+    .dropcheck:checked ~ .dropdown-content {
+    display: block;
+    }
+    
+    .dropcheck:checked + .dropbtn {
+    background-color: #000000;
+    }
+
+}
+
+
+/* the nav bar itself */
+nav {        
+    margin-right: auto;    
+    margin-left: auto;    
+    max-width: 100%;    
+}
+
+/* list for the nav bar */
+nav ul{
+    list-style: none;    
+    position: absolute;
+    right:5vmin;
+    top:5vmin;
+}
+
+/* stiling for the first item, the title is different */
+nav li:first-child {
+    display: inline-flex;
+    position: relative;
+}
+
+
+/* position items in list left to right */
+nav li {
+    display: inline-flex;
+    margin-left: 2vw;
+    margin-top: -2.5vh;
+    top:-1vh;
+    font-size: 1.2em;
+    position: relative;
+}
+
+/* the wrapper that contains elements in the nav bar */
+.wrapper{
+    display: inline-flex;
+    background: #037535;
+    background-size: cover;
+    /*margin-left: -2em;*/
+    /*margin-right: -5em;  */
+    width: 101vw;
+    height: 12vh;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+/*the text in the nav box*/
+nav .box {
+    color: #f8f5f5;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+nav{
+    margin: 0;
+  padding: 0;
+    margin-top: -.5rem;
+}
+

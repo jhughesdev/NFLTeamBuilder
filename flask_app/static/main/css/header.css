@@ -1,0 +1,20 @@
+/* styling for the header */
+
+/*the body*/
+body{
+    position: relative;
+}
+
+
+/*the banner*/
+.banner{
+    background-image: url("../images/grnBackground.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    width: 101vw;
+    height: 15vh;
+    display: block;
+    position: relative;
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Fantasy Football Team Builder </title>
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/main.css') }}">
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/header.css') }}">
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/navbar.css') }}">
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/footer.css') }}">
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/login.css') }}">
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/signup.css') }}">
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/schedule.css') }}">
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/about.css') }}">
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/home.css') }}">
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/team.css') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='main/images/favicon.ico') }}">
+  {% block extracss %}{% endblock %}
+  <script src="{{ url_for('static', filename='main/js/main.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='piano/js/piano.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='main/js/feedback.js') }}" defer></script>
+  {% block extrajs %}{% endblock %}
+</head>
+
+<body>
+    <article>
+    <!-- The header  -->
+    <header>
+        <div class="banner">
+        </div>
+    </header>
+
+    <!-- The navigation bar -->
+    <nav>
+
+        <div class="wrapper">
+
+            {% if user == 'Unknown' %}
+                <h1> Fantasy Football Team Builder </h1>
+            {% else %}
+                <h1> Logged in as {{user}} </h1>
+            {% endif %}
+
+          <!-- list of links displayed in the top right of the website -->
+          <ul>
+
+              <li> <div class="box">  <a href="/home"> Home </a>  </div> </li>
+
+              {% if user != 'Unknown' %}
+                  <li> <div class="box">  <a href="/team"> Team </a>  </div> </li>
+              {% endif %}
+
+              <li> <div class="box"> <a href="/schedule"> Schedule </a> </div> </li>
+
+              {% if user == 'Unknown' %}
+              <li>
+                    <div class="box">  <a href="/signup"> Sign Up </a>  </div>
+              </li>
+              {% endif %}
+
+              <li>
+                  {% if user == 'Unknown' %}
+                    <div class="box">  <a href="/login"> Login </a>  </div>
+                  {% else %}
+                    <div class="box">  <a href="/logout"> Logout </a>  </div>
+                  {% endif %}
+              </li>
+
+
+              <!-- dropdown menu with links  displayed for < 650px width-->
+              <div class="dropdown">
+                  <input id="dropcheck" class="dropcheck" type="checkbox">
+                  <label for="dropcheck" class="dropbtn"> <img src="static/main/images/menu-bar.png"> </label>
+
+                  <div class="dropdown-content">
+                      <a href="/home">Home</a>
+                      <a href="/team">Team</a>
+                      <a href="/schedule">Schedule</a>
+                      <a href="https://www.linkedin.com/in/jacob-hughes-0735a723a">LinkedIn</a>
+                  </div>
+              </div>
+
+          </ul>
+        </div>
+    </nav>
+
+    <!-- The main content  -->
+    <main>
+
+
+      {% block maincontent %}
+      {% endblock %}
+    </main>
+
+    <!-- The footer of the file -->
+    <footer>
+
+        <div class="footerText">
+             ©2023 Jacob R. Hughes
+        </div>
+
+    </footer>
+
+    </article>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,122 @@
+{% extends 'shared/layout.html' %}
+
+
+{% block maincontent %}
+
+    <br>
+        <div id="adminDes">
+            <p> <strong> All NFTs and their corresponding transactions! </strong> </p>
+
+            <p> <strong> Click the hide button to hide the transaction information for a particular NFT. </strong> </p>
+
+            <br>
+
+            <p> <strong> Use the form below to select a range of images you want to see transactions for! </strong> </p>
+
+            <p> (If you only want one in particular, use the same number twice)</p>
+
+        </div>
+    <br>
+
+    <br>
+    <br>
+    <br>
+
+
+      <form id="nftForm4" action='/processShowStart' method="post">
+
+
+        <div class="tokenInput">
+
+            <input type="number" id="start" name="startRange" placeholder="Start of range" required>
+            <br>
+
+        </div>
+
+        <div class="tokenInput">
+
+            <input type="number" id="end" name="endRange" placeholder="End of range" required>
+            <br>
+
+        </div>
+
+        <input type="submit" value="SHOW HISTORY" id="editSubmit">
+
+
+        <br>
+        <br>
+        <br>
+
+    </form>
+
+    {% set my_string = '' %}
+
+    {% for img in nfts %}
+
+        <div class="flex-container">
+
+            <div class="firstcol">
+                <img src="static/main/nfts/{{ img['image_name'] }}">
+            </div>
+
+            <div class="secondcol">
+
+                <form id="nftForm3" action='/processShow' method="post">
+
+
+                    <div class="invis">
+
+                        <textarea id="imgStuff" name="imageID" maxlength="99">{{ img['image_id'] }}</textarea>
+
+                    </div>
+
+                    <div class="invis">
+
+                        <textarea id="own" name="origOwner" maxlength="99">{{ img['user_id'] }}</textarea>
+
+                    </div>
+
+                    <div id="adminDes">
+
+                        Current owner: {{ img['user_id'] }}
+
+                    </div>
+
+                    <br>
+
+                    <div id="adminDes">
+
+                        Transaction History:
+
+                    </div>
+
+                    {% for tran in trans %}
+
+                        {% if tran['image_id'] == img['image_id'] %}
+
+                            {% set cost = tran.cost | string() %}
+                            {% set id = tran.image_id | string() %}
+
+                            {% set my_string = my_string + 'Time purchased: ' + tran.timestamp + '\n' + 'Purchase price: ' + cost + '\n' + 'Seller: ' + tran.seller + '\n' + 'Buyer: ' + tran.buyer + '\n' + 'Image ID: ' + id %}
+
+                            <p> {{ my_string }} </p>
+
+                        {% endif %}
+
+                    {% endfor %}
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <br>
+
+    {% endfor %}
+
+
+<br>
+<br>
+
+{% endblock %}

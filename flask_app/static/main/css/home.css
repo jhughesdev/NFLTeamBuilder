@@ -1,0 +1,22 @@
+
+/*Styling sheet for the home page*/
+
+
+
+/*the submit button on the home page*/
+#SubmitEstimate{
+    margin: 0 auto;
+    background: #0a860e;
+    width: 50vmin;
+    height: 3vmin;
+    border-radius: 1vmin;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+
+
+/* Shows all players on a given user's team */
+#teamInfo{
+    color: #0a860e;
+    font-size: 4vmin;
+}

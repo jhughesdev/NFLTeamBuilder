@@ -1,0 +1,153 @@
+/* styling for the main part of the page */
+
+
+/* the last list*/
+main ul:last-of-type
+{
+    margin-top: -2vmin;
+    text-align: right;
+    list-style: none;
+}
+
+
+/*lists*/
+main li
+{
+    display:inline;
+}
+
+
+/*the headline*/
+.headline{
+    font-weight: bold;
+    font-size: 5vmin;
+}
+
+/*rest of the description*/
+.rest_of_description{
+    font-size: 3vmin;
+}
+
+/*a container*/
+.big_container{
+    display:grid;
+}
+
+/*the below container*/
+.below_container{
+    position: relative;
+    text-align: center;
+    width: 100%;
+    margin-top: -15vh;
+}
+
+/*a header*/
+main h2{
+    font-size:2vmin;
+    color: #7a7a7a;
+    font-style:italic;
+    text-align: center;
+
+}
+
+/*another header*/
+main h3{
+    font-size: 5vmin;
+    color: #018a8a;
+}
+
+/*another header*/
+main h4{
+    font-size: 3vmin;
+    color: #020202;
+}
+
+/*a list*/
+main ul:first-of-type{
+    list-style: none;
+}
+
+/*the image*/
+main img{
+    width:100%;
+    height:100%;
+    border: 5px solid black;
+    object-fit: cover;
+}
+
+/*the column storing the image*/
+.column {
+    margin: auto;
+    margin-top: 10vh;
+    width: 80vw;
+    height: 35vw;
+    overflow-y: scroll;
+    text-align: center;
+}
+
+
+select{
+
+    background-color: #7ce345;
+    width: 50vw;
+    height: 5vh;
+}
+
+
+/* Clear floats after the columns */
+.row:after {
+content: "";
+display: inline-flexbox;
+clear: both;
+max-width: 80vw;
+max-height: 50vh;
+}
+
+/* special styling when screen is < 650px */
+@media screen and (max-width:650px){
+    .row{
+        display:grid;
+        grid-template-columns: 1fr;
+    }
+    .column:first-of-type{
+        margin: auto;
+        width: 40vw;
+        height: 50vh;
+    }
+    .column:last-of-type{
+        margin: auto;
+        text-align: justify;
+        margin: 0 auto;
+        margin-top: 2vh;
+        width: 40vw;
+        height: 50vh;
+        overflow: visible;
+    }
+    .below_container{
+        top: 15vh;
+        position: relative;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+/*another header*/
+main h5{
+    font-size: 5vmin;
+    text-align: center;
+    color:darkcyan;
+}
+
+/*another header*/
+main h6{
+    font-size: 3vmin;
+    text-align: center;
+    color:darkgrey;
+}
+
+/* mark a tags different when visited*/
+main a:visited {
+    text-decoration: none;
+    color: #27a21e;
+}
+

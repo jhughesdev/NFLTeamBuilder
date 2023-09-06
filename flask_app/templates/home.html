@@ -1,0 +1,101 @@
+{% extends 'shared/layout.html' %}
+
+{% block maincontent %}
+<ul>
+
+    <li>
+
+        <!-- container for the row and columns -->
+        <div class="big_container">
+
+            <!-- row that holds the column, which is a description of the main page -->
+            <div class="row">
+
+                <div class="column">
+
+                    <span class="rest_of_description"> This Fantasy Football team builder is used to help personalize
+                        stats for you! Here, you can add players to create your own team! You can see many stats
+                        regarding your team, and use it to help make decisions! To use this feature, make an account
+                        (it only takes a few seconds!)
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </li>
+
+
+    <div class="below_container">
+
+        <div id="teamInfo">
+
+            Your current roster:
+
+        </div>
+
+        <br>
+
+        {% for plr in playerLst %}
+
+            <div class="playerInfo">
+                <strong> {{ plr['player_id'] }} </strong>
+            </div>
+
+        {% endfor %}
+
+        <br>
+        <br>
+        <br>
+
+        <form id="fanForm" method="post" enctype="multipart/form-data" action='/processAdd'>
+
+            <html>
+            <head>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+            </head>
+            <body>
+            </body>
+            </html>
+
+            <div id="PlayerInput">
+              <select id="select-player" placeholder="Choose a player..." name="select-player">
+                <option value="">Select the player desired...</option>
+
+                  {% for p in players %}
+                      <option value="{{ p[0] }} ({{ p[2] }}, {{ p[1] }})"> {{ p[0] }} ({{ p[2] }}, {{ p[1] }})</option>
+                  {% endfor %}
+
+              </select>
+                <br>
+            </div>
+
+            <br>
+
+            <br>
+            <input type="submit" value="Add player!" id="SubmitEstimate">
+            <br>
+
+
+        </form>
+
+
+    </div>
+
+</ul>
+
+<br>
+<br>
+
+
+
+
+{% endblock %}
+
+

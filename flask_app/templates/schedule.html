@@ -1,0 +1,59 @@
+{% extends 'shared/layout.html' %}
+
+{% block maincontent %}
+
+
+    <div class="scheduleHeader">
+
+        <strong> Upcoming Games </strong>
+
+    </div>
+
+    <br>
+    <br>
+
+
+    <table>
+
+        <tr>
+            <th>MATCHUP</th>
+            <th>TIME</th>
+            <th>LINE</th>
+            <th>OVER/UNDER</th>
+        </tr>
+
+        {% for event in lst %}
+
+            <tr>
+
+            {% for event_dic in event %}
+
+                {% for k,v in event_dic.items() %}
+
+
+                    {% if k == "matchUp" %}
+
+                        <td>
+                            <img src="{{v[0]}}" alt="" class="my-image">
+                            {{ v[1] }}                                      @
+                            <img src="{{v[2]}}" alt="" class="my-image">
+                            {{ v[3] }}
+                        </td>
+
+                    {% else %}
+
+                        <td>{{ v }}</td>
+
+                    {% endif %}
+
+                 {% endfor %}
+
+            {% endfor %}
+
+            </tr>
+
+        {% endfor %}
+
+    </table>
+
+{% endblock %}

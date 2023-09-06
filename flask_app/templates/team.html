@@ -1,0 +1,146 @@
+{% extends 'shared/layout.html' %}
+
+{% block maincontent %}
+
+<br>
+<br>
+
+<div class="teamInfo">
+    <strong> Team {{ user }}'s 2022 Rushing, Receiving, and Passing Stats! </strong>
+</div>
+
+
+<br>
+<br>
+
+{% for k,v in stats_dic.items() %}
+
+    <div class="playerName">
+        <strong> {{ k }} </strong>
+    </div>
+
+    <table>
+
+        <tr>
+
+        {% for k, v2 in v[0].items() %}
+
+                {% if "RK" in k %}
+
+                    <strong> RUSHING </strong>
+                    <th>
+                        {{ "RK" }}
+                    </th>
+
+                {% elif "RK" not in k %}
+
+                    <th>
+                        {{ k }}
+                    </th>
+
+                {% endif %}
+
+        {% endfor %}
+
+        </tr>
+
+        <tr>
+
+            {% for k, v2 in v[0].items() %}
+
+                <td>
+                    <strong> {{ v2 }}</strong>
+                </td>
+
+            {% endfor %}
+
+        </tr>
+
+    </table>
+
+
+    <table>
+
+        <tr>
+
+        {% for k, v2 in v[1].items() %}
+
+                {% if "RK" in k %}
+
+                    <strong> RECEIVING </strong>
+                    <th>
+                        {{ "RK" }}
+                    </th>
+
+                {% elif "RK" not in k %}
+
+                    <th>
+                        {{ k }}
+                    </th>
+
+                {% endif %}
+
+        {% endfor %}
+
+        </tr>
+
+        <tr>
+
+        {% for k, v2 in v[1].items() %}
+
+            <td>
+                <strong> {{ v2 }}</strong>
+            </td>
+
+        {% endfor %}
+
+        </tr>
+
+    </table>
+
+    <table>
+
+        <tr>
+
+        {% for k, v2 in v[2].items() %}
+
+                {% if "RK" in k %}
+
+                    <strong> PASSING </strong>
+                    <th>
+                        {{ "RK" }}
+                    </th>
+
+                {% elif "RK" not in k %}
+
+                    <th>
+                        {{ k }}
+                    </th>
+
+                {% endif %}
+
+        {% endfor %}
+
+        </tr>
+
+        <tr>
+
+        {% for k, v2 in v[2].items() %}
+
+            <td>
+                <strong> {{ v2 }}</strong>
+            </td>
+
+        {% endfor %}
+
+        </tr>
+
+    </table>
+
+    <br>
+    <br>
+
+{% endfor %}
+
+
+{% endblock %}

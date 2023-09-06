@@ -1,0 +1,110 @@
+{% extends 'shared/layout.html' %}
+
+
+{% block maincontent %}
+
+
+
+
+    <br>
+    <br>
+    <br>
+    <div id="buyerDescription">
+        Available NFTs for purchase
+    </div>
+    <br>
+    <br>
+    <br>
+
+
+    {% for u in users%}
+
+        <div id="buyerDescription2">
+            {{ u['email'] }} Has {{ u['token'] }} tokens to spend!
+        </div>
+
+        <br>
+
+        {% if sale == 'false' %}
+
+            <div id="NFTFail">
+                You cannot afford that NFT!
+            </div>
+
+        {% endif %}
+
+        {% if sale == 'true' %}
+
+            <div id="NFTPass">
+                NFT Purchased successfully!
+            </div>
+
+        {% endif %}
+
+        {% for img in nfts %}
+
+            <div id="ownerDes">
+                <p> <strong> Owned by {{ img['user_id'] }} </strong> </p>
+            </div>
+
+            <div class="flex-container">
+
+                <div class="firstcol">
+                    <img src="static/main/nfts/{{ img['image_name'] }}">
+                </div>
+
+                <div class="secondcol">
+
+                    <form id="nftForm3" action='/processPurchase' method="post">
+
+
+                        <p> <strong> NFT description </strong> </p>
+
+                        <textarea id="nftDes1" name="testing" readonly maxlength="99">{{ img['description'] }}
+                        </textarea>
+
+                        <p> <strong> Token Value </strong> </p>
+
+                        <textarea id="nftDes2" name="testing2" readonly>{{ img['token'] }} </textarea>
+
+
+                        <div class="invis">
+
+                            <textarea id="imgStuff" name="imageID" maxlength="99">{{ img['image_id'] }}</textarea>
+
+                        </div>
+
+                        <div class="invis">
+
+                            <textarea id="userTok" name="userTokens" maxlength="99">{{ u['token'] }}</textarea>
+
+                        </div>
+
+
+                        <input type="submit" value="Purchase" id="editSubmit">
+
+                        <div class="invis">
+
+                            <textarea id="own" name="origOwner" maxlength="99">{{ img['user_id'] }}</textarea>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+
+
+        {% endfor %}
+
+    {% endfor %}
+
+
+<br>
+<br>
+<br>
+
+{% endblock %}

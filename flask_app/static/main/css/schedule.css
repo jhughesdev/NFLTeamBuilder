@@ -1,0 +1,48 @@
+
+/*styling for the schedule page*/
+
+/*the heading at the top*/
+.scheduleHeader{
+    margin-top: 5vh;
+    color: green;
+    text-align: center;
+    font-size: 5vmin;
+}
+
+
+/*every odd row in the table*/
+tr:nth-child(odd) {
+    background-color: Lightgreen;
+}
+
+/*the first row of the table*/
+table tr:first-child {
+  height: 3vmin;
+  font-size: 2vmin;
+  font-weight: bold;
+}
+
+/*images used for the team logos*/
+img.my-image {
+  border: none;
+}
+
+/*the table*/
+table {
+    table-layout: fixed;
+  width: 100%;
+  flex-grow: 1;
+}
+
+/*each entry within the table*/
+table td {
+  width: 25%; /* Adjust the width of the table cells as needed */
+  text-align: center;
+}
+
+/*the images in the table*/
+table img {
+  max-width: 10%;
+  width: auto;
+  height: auto;
+}

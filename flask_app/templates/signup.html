@@ -1,0 +1,65 @@
+{% extends 'shared/layout.html' %}
+
+{% block extrajs %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{% endblock %}
+
+
+{% block maincontent %}
+<br><br>
+
+<div class="login">
+    Sign Up
+</div>
+
+<br>
+<br>
+
+<hr>
+
+
+<form id="loginForm" action='/processSignup' method="post">
+
+    <input type="text" id="email" name="email" placeholder="Enter your email">
+
+    <input type="text" id="password" name="password" placeholder="Enter your password">
+
+    <input type="submit" value="Submit" id="loginSubmit">
+
+</form>
+
+<br>
+<br>
+<br>
+
+
+{% if account == 'Fail' %}
+    <div class="fail">
+        Account with username: {{ accountUser }}  already exists
+    </div>
+    <br>
+    <br>
+{% elif account == 'Success' %}
+    <div class="success">
+        Account with username: {{ accountUser }} successfully created!
+    </div>
+    <br>
+    <br>
+{% endif %}
+
+
+<div class="login">
+    Already have an account?
+</div>
+
+
+<a href="/login">
+    <button id="myButton"> <b>Login!</b> </button>
+</a>
+
+<br>
+<br>
+<br>
+
+
+{% endblock %}
