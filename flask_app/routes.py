@@ -18,10 +18,6 @@ rush_dic = {}
 rec_dic = {}
 
 
-
-
-
-
 def process_csv_by_name_and_position(csv_file, player_name):
     with open(csv_file, 'r') as file:
         reader = csv.DictReader(file)
@@ -100,14 +96,12 @@ def save_list_to_file(my_list):
 @app.route('/processAdd', methods=["POST", "GET"])
 @login_required
 def processAdd():
-
     playerOwned = False
     p = request.form.get("select-player")
 
     # pass_dic = {}
     # rush_dic = {}
     # rec_dic = {}
-
 
     x = db.query("Select * From transactions Where user_id = '" + getUser() + "' and player_id = '" + p + "'")
     if not x:  # then we add the player
@@ -184,7 +178,6 @@ def processAdd():
 
         db.insertTransaction('transaction_table', parameters=[[getUser(), p, pass_str, rush_str, rec_str]])
 
-
         json_pass = json.dumps(pass_dic)
         json_rush = json.dumps(rush_dic)
         json_rec = json.dumps(rec_dic)
@@ -199,14 +192,9 @@ def processAdd():
         print(json_rec)
         print('\n')
 
-
         db.insertTest('transaction_table', parameters=[[getUser(), p, json_pass, json_rush, json_rec]])
     else:
         playerOwned = True
-
-
-
-
 
     updatedLst = db.query("Select * From transactions Where user_id = '" + getUser() + "' ")
 
@@ -223,7 +211,8 @@ def processAdd():
     print('\n')
     print("END OF LST")
 
-    return render_template('home.html', user=getUser(), players=getPlayers(), numPicks=488, playerLst=updatedLst, own=playerOwned, rec_dic=rec_dic, rush_dic=rush_dic, pass_dic=pass_dic, testing=test_lst)
+    return render_template('home.html', user=getUser(), players=getPlayers(), numPicks=488, playerLst=updatedLst,
+                           own=playerOwned, rec_dic=rec_dic, rush_dic=rush_dic, pass_dic=pass_dic, testing=test_lst)
 
 
 @app.route('/processlogin', methods=["POST", "GET"])
@@ -240,7 +229,8 @@ def processlogin():
 
         PL = db.query("Select * From transactions Where user_id = '" + getUser() + "' ")
 
-        return render_template('home.html', user=getUser(), players=getPlayers(), numPicks=488, playerLst=PL, own=False, rec_dic={}, rush_dic={}, pass_dic={})
+        return render_template('home.html', user=getUser(), players=getPlayers(), numPicks=488, playerLst=PL, own=False,
+                               rec_dic={}, rush_dic={}, pass_dic={})
 
 
 @app.route('/processSignup', methods=["POST", "GET"])
@@ -276,7 +266,6 @@ def root():
 
 @app.route('/team')
 def team():
-
     PL = db.query("Select * From transactions Where user_id = '" + getUser() + "' ")
 
     trans = db.query("Select * From test Where user_id = '" + getUser() + "' ")
@@ -297,7 +286,6 @@ def team():
 
         player_rush[player['player_id']] = rsh_dic
 
-
         # Receiving related stats to player
 
         rc_str = player['rec']
@@ -305,7 +293,6 @@ def team():
         rc_dic = json.loads(rc_str)
 
         player_rec[player['player_id']] = rc_dic
-
 
         # Passing related stats to player
 
@@ -315,20 +302,20 @@ def team():
 
         player_pass[player['player_id']] = ps_dic
 
-
         # connect all stats in one dic
 
         stats_dic[player['player_id']] = [rsh_dic, rc_dic, ps_dic]
 
-    return render_template('team.html', user=getUser(), playerLst=PL, lst=trans, player_pass=player_pass, player_rush=player_rush, player_rec=player_rec, stats_dic=stats_dic)
+    return render_template('team.html', user=getUser(), playerLst=PL, lst=trans, player_pass=player_pass,
+                           player_rush=player_rush, player_rec=player_rec, stats_dic=stats_dic)
 
 
 @app.route('/home')
 def home():
-
     PL = db.query("Select * From transactions Where user_id = '" + getUser() + "' ")
 
-    return render_template('home.html', user=getUser(), players=getPlayers(), numPicks=488, playerLst=PL, own=False, rec_dic={}, rush_dic={}, pass_dic={})
+    return render_template('home.html', user=getUser(), players=getPlayers(), numPicks=488, playerLst=PL, own=False,
+                           rec_dic={}, rush_dic={}, pass_dic={})
 
 
 @app.route("/static/<path:path>")
@@ -342,7 +329,6 @@ def add_header(r):
     r.headers["Pragma"] = "no-cache"
     r.headers["Expires"] = "0"
     return r
-
 
 
 @app.route('/schedule')
@@ -425,7 +411,6 @@ def schedule():
                             and key2 != "name" and key2 != "week" and key2 != "link":
                         myLst[count].append({key2: val2})
 
-
                 count += 1
 
     sorted_data = []
@@ -439,13 +424,14 @@ def schedule():
                 {'spread': game[4]['details']},  # Details
                 {'overUnder': game[5]['overUnder']}  # Over/Under
             ]
-        except KeyError:
+        except Exception as e:
             sorted_game = [
                 {'matchUp': [game[3]['awayLogo'], game[0]['away'], game[2]['homeLogo'], game[1]['home']]},  # Home team
-                {'time': game[7]['time']},  # Time
-                {'spread': game[4]['details']},  # Details
-                {'overUnder': game[5]['overUnder']}  # Over/Under
+                # {'time': game[7]['time']},  # Time
+                # {'spread': game[4]['details']},  # Details
+                # {'overUnder': game[5]['overUnder']}  # Over/Under
             ]
+
         # sorted_data.append(sorted_game)
         # except KeyError:  # different format for pre season games
         #     sorted_game = [
@@ -463,7 +449,5 @@ def schedule():
         #         {'overUnder': "N/A"}  # Over/Under
         #     ]
         sorted_data.append(sorted_game)
-
-
 
     return render_template('schedule.html', user=getUser(), lst=sorted_data)
